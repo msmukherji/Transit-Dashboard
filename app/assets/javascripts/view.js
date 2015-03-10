@@ -1,150 +1,189 @@
-var Task = Backbone.Model.extend({
-
-  close: function() {
-    $.ajax({
-      url: "/tasks/" + this.id + "/close",
-      method: "POST",
-      context: this,
-      success: function(updatedTask) {
-        this.set(updatedTask)
-      }
-    })
-  },
-
-  reopen: function() {
-    $.ajax({
-      url: "/tasks/" + this.id + "/reopen",
-      method: "POST",
-      context: this,
-      success: function(updatedTask) {
-        this.set(updatedTask)
-      }
-    })
-  },
-
+var switchUI = function(){
+  $("#selected").toggle()
+  $("#unselected").toggle()
+}
+$("#Favorites").on("click", function(){
+  switchUI()
+  console.log("hello")
 })
 
-var List = Backbone.Collection.extend({
+var getBusSelect = function(){
+  $.ajax({
+    url: "/stations/buses.json",
+    method: "GET",
+    success: function(data){
+      
+      _.each(data.stops, function(steve){
+        var allData = {
+          name: steve.name,
+          routes: steve.routes,
+          id: steve.stop_id,
+        }
+        var htmlString = templates.selectbus(allData)
+        var $itemHtml = $(htmlString)
+        $(".sBus").append($itemHtml)
 
-  model: Task,
+        $itemHtml.find(".fav").on("click", function(){
+          var id = $(this).attr("data-id")
 
-  url: "/tasks/incomplete"
+          $.ajax({
+            method:"POST",
+            url: "/stations/buses",
+            data: {
+              id: id
+            },
+            success: function(data){
+              console.log(data)
 
-})
-var CompleteList = Backbone.Collection.extend({
+            }
+          })
 
-  model: Task,
+        })
+      })
+    }
+  })
+}
 
-  url: "/tasks/complete"
+var getMetroSelect = function(){
+  $.ajax({
+    url: "/stations/trains.json",
+    method: "GET",
+    success: function(data){
+      _.each(data.stops, function(steve){
+        var allData = {
+          name: steve.name,
+          routes: steve.routes,
+          Id: steve.station_code,
+        }
+        var htmlString = templates.selectmetro(allData)
+        var $itemHtml = $(htmlString)
+        $(".sMetro").append(htmlString)
 
-})
-var AllList = Backbone.Collection.extend({
+        $itemHtml.find(".fav").on("click", function(){
+          var id = $(this).attr("data-id")
 
-  model: Task,
+          $.ajax({
+            method:"POST",
+            url: "/stations/buses.json",
+            data: {
+              id: id
+            },
+            success: function(data){
+              console.log(data)
 
-  url: "/tasks"
+            }
+          })
 
-})
+        })
 
+      })
+    }
+  })
+}
+var getBikeSelect = function(){
+  $.ajax({
+    url: "/stations/bikes.json",
+    method: "GET",
+    success: function(data){
+      console.log(data)
+      _.each(data.stations, function(steve){
+        var allData = {
+          name: steve.name,
+          terminal: steve.terminal,
+          
+        }
+        var htmlString = templates.selectbike(allData)
+        var $itemHtml = $(htmlString)
+        $(".sBike").append(htmlString)
 
-//not done list
-var todoView = Backbone.View.extend({
+        $itemHtml.find(".fav").on("click", function(){
+          var id = $(this).attr("data-id")
 
-  events: {
-    "click .btn-done": "clickedComplete",
-     
-  },
+          $.ajax({
+            method:"POST",
+            url: "/stations/buses.json",
+            data: {
+              id: id
+            },
+            success: function(data){
+              console.log(data)
 
-  clickedComplete: function() {
-    this.model.close()
-  },
+            }
+          })
 
-  clickedReopen: function() {
-    this.model.reopen()
-  },
-
-  tagName: "div",
-
-  className: "task-container",
-
-  initialize: function(taskModel){
-    this.model = taskModel
-
-    this.listenTo(this.model, "change", this.render)
-
-    this.render()
-  },
-
-  render: function() {
-    this.$el.html( templates.todo(this.model.toJSON()) )
+        })
+      })
+    }
+  })
+}
+var getFavBus = function(){
+  $.ajax({
+    url: "/stations/buses.json",
+    method: "GET",
+    success: function(data){
+      _.each(data, function(steve){
+        var allData = {
+          name: steve.name,
+          routes: steve.routes,
+          Id: steve.stop_id,
+        }
+        var htmlString = templates.metro(allData)
+        $(".Bus").append(htmlString)
+      })
+    }
+  })
+}
+var getFavBike = function(){
+  $.ajax({
+    url: "/stations/bikes.json",
+    method: "GET",
+    success: function(data){
+      _.each(data, function(steve){
+        var allData = {
+          name: steve.name,
+          routes: steve.routes,
+          Id: steve.stop_id,
+        }
+        var htmlString = templates.bike(allData)
+        $(".Bike").append(htmlString)
+      })
+    }
+  })
+}
+var getFavMetro = function(){
+  $.ajax({
+    url: "/stations/trains.json",
+    method: "GET",
+    success: function(data){
+      _.each(data, function(steve){
+        var allData = {
+          name: steve.name,
+          routes: steve.routes,
+          Id: steve.stop_id,
+        }
+        var htmlString = templates.bus(allData)
+        $(".Metro").append(htmlString)
+      })
+    }
+  })
+}
+var templates= {}
+var getTemplates = function() {
+  templates = {
+    bus: Handlebars.compile( $("#bus-template").text() ),
+    bike: Handlebars.compile( $("#bike-template").text() ),
+    metro: Handlebars.compile( $("#metro-template").text() ),
+    selectbus: Handlebars.compile($("#select-bus-template").text() ),
+    selectbike: Handlebars.compile($("#select-bike-template").text() ),
+    selectmetro: Handlebars.compile($("#select-metro-template").text() )
   }
+}
 
-})
 
 
-//done view
-var doneView = Backbone.View.extend({
-
-  events: {
-    "click .btn-done": "clickedComplete",
-    "click .btn-undo": "clickedReopen"
-  },
-
-  clickedComplete: function() {
-    this.model.close()
-  },
-
-  clickedReopen: function() {
-    this.model.reopen()
-  },
-
-  tagName: "div",
-
-  className: "task-container",
-
-  initialize: function(taskModel){
-    this.model = taskModel
-
-    this.listenTo(this.model, "change", this.render)
-
-    this.render()
-  },
-
-  render: function() {
-    this.$el.html( templates.done(this.model.toJSON()) )
-  }
-
-})
-//all view
-var View = Backbone.View.extend({
-
-  events: {
-    "click #btn-done": "clickedComplete",
-    "click #btn-undo": "clickedReopen"
-  },
-
-  clickedComplete: function() {
-    this.model.close()
-  },
-
-  clickedReopen: function() {
-    this.model.reopen()
-  },
-
-  tagName: "div",
-
-  className: "task-container",
-
-  initialize: function(taskModel){
-    this.model = taskModel
-
-    this.listenTo(this.model, "change", this.render)
-
-    this.render()
-  },
-
-  render: function() {
-    this.$el.html( templates.done(this.model.toJSON()) )
-  }
-
+$(document).on("ready", function(){
+  getTemplates()
+  getBusSelect()
+  getMetroSelect()
+  getBikeSelect()
 })

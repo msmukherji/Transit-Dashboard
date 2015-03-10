@@ -1,52 +1,129 @@
-<h1> hi here's a home page </h1
+	
 	
  	<div class="container">
- 		<div class="Bus">
+ 		<div class="dashboard">
+ 			<span class="Dash">Dashboard</span>
+ 			<span class="Favorites">Favorites</span>
+ 			<span class="SignUp">Sign Up <i class="fa fa-spinner fa-pulse"></i></span>
+ 		</div>
+ 		
+ 		<div id="selected">
+	 		<div class="Bus">
+	 			
+			</div>
+
+	 		<div class="Bike">
+	 			
+				
+	 		</div>
+	 		
+	 		<div class="Metro">
+	 			
+			</div>
 
  		</div>
- 		<div class="Bike-wrap">
- 			<div class="header">
-			<span id="name">Capital Bikeshare</span>
-			<span id="bikes">Bikes</span>
-			<span id="docks">Docks</span>
-			<div class="bike-info"></div>
-		</div>
- 		</div>
- 		<div class="Metro">
+
+ 		<div id="unselected">
+	 		<div class="sBus">
+	 			
+			</div>
+
+	 		<div class="sBike">
+	 			
+	 		</div>
+	 		
+	 		<div class="sMetro">
+	 			
+			</div>
 
  		</div>
 
  	</div>
 
 	<script type="x-handlebars-template" id="bike-template">
-	<div>
-		
-		<span><img src=""></span>
-		<span class="location">{{location}}</span>
-		<span class="bikes">{{bikes}}</span>
-		<span class="docks">{{Docks}}</span>
+	<div class="header">
+		<div id="bike-name">Capital Bikeshare</div>
+		<div id="bikes">Bikes</div>
+		<div id="docks">Docks</div>
 	</div>
+		<div class="bike-info">
+			<div class="bike-wrap1"><i class="fa fa-motorcycle"></i></div>
+			<div class="bike-wrap2">Description</div>
+			<div class="bike-wrap3">2</div>
+			<div class="bike-wrap4">1</div>
+		</div>
 	</script>
 
+	
 	<script type="x-handlebars-template" id="metro-template">
-		<
-		<span>{{}}</span>
+		<div class="header">
+			<span class="pic"><strong>M</strong></span>
+			<span class="station">Station</span>
+		</div>
+		{{#each train}}
+		<div class="metro-wrap1">OR</div>
+		<div class="metro-wrap2">Destination</div>
+		<div class="metro-wrap3">Arrival<p class="metro-wrap4">minutes</p></div>
+		{{/each}}
 	</script>
 
+	
 	<script type="x-handlebars-template" id="bus-template">
-		<div>
 		<div class="header">
 			<span class="pic"><i class="fa fa-bus"></i></span>
-			<span class="station">{{station}}</span>
-
-			
+			<span class="station">Station</span>
 		</div>
-		<span></span>
-		<span class="name">{{name}}</span>
-		<span class="destination">{{destination}}</span>
-		<span class="arrival">{{arrival}}</span>
-	</div>
+		{{#each bus}}
+		<div class="bus-wrap1">S2</div>
+		<div class="bus-wrap2">Destnation</div>
+		<div class="bus-wrap3">Arrival<p class="bus-wrap4">minutes</p></div>
+		{{/each bus}}
+	</script>
 
+	
+	<script type="x-handlebars-template" id="select-bike-template">
+	<div class="header">
+		<div id="bike-name">Capital Bikeshare</div>
+		<button class="fav">Fav</button>
+		<button class="unfav">Unfav</button>
+	</div>	
+
+		<div class="bike-info">
+			<div class="bike-wrap1"><i class="fa fa-motorcycle"></i></div>
+			<div class="bike-wrap2">{{name}}</div>
+			<div class="bike-wrap5">{{terminal}}</div>
+		</div>
+				
+	</script>
+
+	
+	<script type="x-handlebars-template" id="select-metro-template">
+		<div class="header">
+			<span class="pic"><strong>M</strong></span>
+			<span class="station">{{name}}</span>
+			<button data-id="{{id}}"class="fav">Fav</button>
+			<button class="unfav">Unfav</button>
+		</div>
+		{{#each trains}}
+		<div class="metro-wrap1">OR</div>
+		<div class="metro-wrap2">destination</div>
+		<div class="metro-wrap3"></div>
+		{{/each}}
+	</script>
+
+	
+	<script type="x-handlebars-template" id="select-bus-template">
+		<div class="header">
+			<span class="pic"><i class="fa fa-bus"></i></span>
+			<span class="bus-station">{{name}}</span>
+			<button data-id="{{id}}"class="fav">Fav</button>
+			<button class="unfav">Unfav</button>
+		</div>
+		{{#each routes}}
+		<div class="bus-wrap1"></div>
+		<div class="bus-wrap2">Routes: {{this}}</div>
+		<div class="bus-wrap3"></div>
+		{{/each}}
 	</script>
 
 
