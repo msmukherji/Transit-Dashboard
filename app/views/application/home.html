@@ -9,72 +9,31 @@
  		
  		<div id="selected">
 	 		<div class="Bus">
-	 			<div class="header">
-					<span class="pic"><i class="fa fa-bus"></i></span>
-					<span class="station">Station</span>
-				</div>
-				
-				<div class="bus-wrap1">S2</div>
-				<div class="bus-wrap2">Destnation</div>
-				<div class="bus-wrap3">Arrival<p class="bus-wrap4">minutes</p></div>
+	 			
 			</div>
 
 	 		<div class="Bike">
-	 			<div class="header">
-					<div id="bike-name">Capital Bikeshare</div>
-					<div id="bikes">Bikes</div>
-					<div id="docks">Docks</div>
-					<div class="bike-info"></div>
-				</div>
+	 			
+				
 	 		</div>
 	 		
 	 		<div class="Metro">
-	 			<div class="header">
-					<span class="pic"><strong>M</strong></span>
-					<span class="station">Station</span>
-				</div>
-				
-				<div class="metro-wrap1">OR</div>
-				<div class="metro-wrap2">Destination</div>
-				<div class="metro-wrap3">Arrival<p class="metro-wrap4">minutes</p></div>
+	 			
 			</div>
 
  		</div>
 
  		<div id="unselected">
-	 		<div class="Bus">
-	 			<div class="header">
-					<span class="pic"><i class="fa fa-bus"></i></span>
-					<span class="bus-station">Bus Station</span>
-				</div>
-				
-				<div class="bus-wrap1">S2</div>
-				<div class="bus-wrap2">Destnation</div>
-				<div class="bus-wrap3">Arrival</div>
+	 		<div class="sBus">
+	 			
 			</div>
 
-	 		<div class="Bike">
-	 			<div class="header">
-					<div id="bike-name">Capital Bikeshare</div>
-					<div id="bikes">Bikes</div>
-					<div id="docks">Docks</div>
-					<div class="bike-info">
-						<div class="bike-wrap1"></div>
-						<div class="bike-wrap2"></div>
-						<div class="bike-wrap3"></div>
-					</div>
-				</div>
+	 		<div class="sBike">
+	 			
 	 		</div>
 	 		
-	 		<div class="Metro">
-	 			<div class="header">
-					<span class="pic"><strong>M</strong></span>
-					<span class="station">Station</span>
-				</div>
-				
-				<div class="metro-wrap1">OR</div>
-				<div class="metro-wrap2">destination</div>
-				<div class="metro-wrap3">Arrival</div>
+	 		<div class="sMetro">
+	 			
 			</div>
 
  		</div>
@@ -82,65 +41,89 @@
  	</div>
 
 	<script type="x-handlebars-template" id="bike-template">
-	<div>
-		
-		<span><img src=""></span>
-		<span class="location">{{location}}</span>
-		<span class="bikes">{{bikes}}</span>
-		<span class="docks">{{Docks}}</span>
+	<div class="header">
+		<div id="bike-name">Capital Bikeshare</div>
+		<div id="bikes">Bikes</div>
+		<div id="docks">Docks</div>
 	</div>
+		<div class="bike-info">
+			<div class="bike-wrap1"><i class="fa fa-motorcycle"></i></div>
+			<div class="bike-wrap2">Description</div>
+			<div class="bike-wrap3">2</div>
+			<div class="bike-wrap4">1</div>
+		</div>
 	</script>
 
+	
 	<script type="x-handlebars-template" id="metro-template">
-		
-		<span>{{}}</span>
+		<div class="header">
+			<span class="pic"><strong>M</strong></span>
+			<span class="station">Station</span>
+		</div>
+		{{#each train}}
+		<div class="metro-wrap1">OR</div>
+		<div class="metro-wrap2">Destination</div>
+		<div class="metro-wrap3">Arrival<p class="metro-wrap4">minutes</p></div>
+		{{/each}}
 	</script>
 
+	
 	<script type="x-handlebars-template" id="bus-template">
-		<div class= "bus-wrap">
 		<div class="header">
 			<span class="pic"><i class="fa fa-bus"></i></span>
-			<span class="station">{{station}}</span>
-
+			<span class="station">Station</span>
 		</div>
-		{{each bus}}
-		<span class="name">{{name}}</span>
-		<span class="destination">{{destination}}</span>
-		<span class="arrival">{{arrival}}</span>
-		{{/each}}
-	</div>
-
+		{{#each bus}}
+		<div class="bus-wrap1">S2</div>
+		<div class="bus-wrap2">Destnation</div>
+		<div class="bus-wrap3">Arrival<p class="bus-wrap4">minutes</p></div>
+		{{/each bus}}
 	</script>
 
+	
 	<script type="x-handlebars-template" id=" select-bike-template">
-	<div>
-		
-		<span><img src=""></span>
-		<span class="location">{{location}}</span>
-		<span class="bikes">{{bikes}}</span>
-		<span class="docks">{{Docks}}</span>
-	</div>
+	<div class="header">
+		<div id="bike-name">Capital Bikeshare</div>
+		<button class="fav">Fav</button>
+		<button class="unfav">Unfav</button>
+	</div>	
+
+		<div class="bike-info">
+			<div class="bike-wrap1"><i class="fa fa-motorcycle"></i></div>
+			<div class="bike-wrap2">Description</div>
+			<div class="bike-wrap5"></div>
+		</div>
+				
 	</script>
 
-	<script type="x-handlebars-template" id="select-bike-metro-template">
-		
-		<span>{{}}</span>
+	
+	<script type="x-handlebars-template" id="select-metro-template">
+		<div class="header">
+			<span class="pic"><strong>M</strong></span>
+			<span class="station">Station</span>
+			<button class="fav">Fav</button>
+			<button class="unfav">Unfav</button>
+		</div>
+		{{#each trains}}
+		<div class="metro-wrap1">OR</div>
+		<div class="metro-wrap2">destination</div>
+		<div class="metro-wrap3"></div>
+		{{/each}}
 	</script>
 
-	<script type="x-handlebars-template" id="select-bike-bus-template">
-		<div class= "bus-wrap">
+	
+	<script type="x-handlebars-template" id="select-bus-template">
 		<div class="header">
 			<span class="pic"><i class="fa fa-bus"></i></span>
-			<span class="station">{{station}}</span>
-
+			<span class="bus-station">{{name}}</span>
+			<button data-id="{{id}}"class="fav">Fav</button>
+			<button class="unfav">Unfav</button>
 		</div>
-		{{each bus}}
-		<span class="name">{{name}}</span>
-		<span class="destination">{{destination}}</span>
-		<span class="arrival">{{arrival}}</span>
+		{{#each routes}}
+		<div class="bus-wrap1">{{routes}}</div>
+		<div class="bus-wrap2">Destnation</div>
+		<div class="bus-wrap3"></div>
 		{{/each}}
-	</div>
-
 	</script>
 
 
