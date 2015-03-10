@@ -5,4 +5,10 @@ class Train < Station
     stops = placeholder["Entrances"]
   end
 
+  # def self.create_train_station (stop_array)
+  #   stop_array.each do |stop|
+  #     Train.create(stop)
+  #   end
+  # end
+
 end

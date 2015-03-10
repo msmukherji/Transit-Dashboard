@@ -1,8 +1,5 @@
 class BusesController < ApplicationController
   #before_action :authenticate_user!
-	# def index
-	# 	@buses = ["gregbus", "mattbus", "mishkabus"]
-	# end
 
   def show
     # #bus_params = params[:lat,:lon,:radius]
@@ -11,6 +8,6 @@ class BusesController < ApplicationController
   end
 
   def update
-    @chosen_buses = create_bus_station(@stops)
+    Station.create_bus_station(name: params[:id], type: "bus")
   end
 end

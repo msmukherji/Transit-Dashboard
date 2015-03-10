@@ -6,5 +6,6 @@ class TrainsController < ApplicationController
   end
 
   def update
+    @chosen_trains = Train.create_train_station(params[:stop_array])
   end
 end
