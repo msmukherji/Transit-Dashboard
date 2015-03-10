@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  belongs_to :user_stations
-  has_many :stations, through: :user_stations
+
+  has_many :stations
   
 end

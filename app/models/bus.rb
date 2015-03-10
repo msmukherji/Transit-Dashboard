@@ -5,7 +5,7 @@ class Bus < Station
     stops = placeholder["Stops"]
   end
 
-  def self.create_bus_station (bus_params)
-    Station.create(name: bus_params, type: "bus")
+  def station_info
+    HTTParty.get("https://api.wmata.com/NextBusService.svc/json/jPredictions?#{name}&api_key=#{WMATA_KEY}")
   end
 end

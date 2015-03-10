@@ -18,4 +18,10 @@ class Bike < Station
     end
     return station_array
   end
+
+  # def self.create_bike_station (stop_array)
+  #   stop_array.each do |stop|
+  #     Bike.create(stop)
+  #   end
+  # end
 end

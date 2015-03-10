@@ -11,15 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309194106) do
+ActiveRecord::Schema.define(version: 20150310211917) do
 
   create_table "stations", force: :cascade do |t|
-    t.string "name"
-    t.string "type"
-  end
-
-  create_table "user_stations", force: :cascade do |t|
-    t.integer "station_id"
+    t.string  "name"
+    t.string  "type"
     t.integer "user_id"
   end
 
