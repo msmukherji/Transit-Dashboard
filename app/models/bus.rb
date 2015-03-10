@@ -1,7 +1,8 @@
 class Bus < Station
   
-  def bus_station (lat, lon, radius = 500)
-    stops = HTTParty.get("https://api.wmata.com/Bus.svc/json/jBusPositions?Lat=#{lat}&Lon=#{lon}&Radius=#{radius}&api_key=#{WMATA_KEY}")
+  def self.bus_station (lat, lon, radius = 500)
+    placeholder = HTTParty.get("https://api.wmata.com/Bus.svc/json/jStops?Lat=#{lat}&Lon=#{lon}&Radius=#{radius}&api_key=#{WMATA_KEY}")
+    stops = placeholder["Stops"]
   end
 
   def create_bus_station (stop_array)
