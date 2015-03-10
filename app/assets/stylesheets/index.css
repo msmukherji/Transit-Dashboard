@@ -3,10 +3,151 @@
 	margin:0;
 	box-sizing: border-box;
 }
+#unselected{
+	display: none;
+}
+.dashboard{
+	width: 100%;
+	color: white;
+	font-size:20px;
+	font-family: fantasy;
+}
+.dashboard span{
+	margin-left:3px;
+}
+.Favorites{
+	border-left: solid 1px red;
+}
+.SignUp{
+	border-left: solid 1px red;
+}
+.SignUp:hover{
+cursor: pointer;
+color:red;
+}
+.Favorites:hover{
+cursor: pointer;
+color:red;
+}
 .container{
-	width: 100%
+	width: 100%;
 	height: 100vh;
+	 background-color: #000;
+  	font-family: Helvetica, Arial, sans-serif;
+  	color:#eeeeee;
+  	overflow: auto; 
 }
 h1{
 	color: red;
+}
+.Bus{
+	border: 1px solid blue;
+	width: 30%;
+	display:inline-block;
+	margin-left:1%;
+	margin-top: 1%;
+
+}
+.Bike{
+	border: 1px solid purple;
+	width: 30%;
+	display:inline-block;
+	vertical-align: top;
+	margin-top: 1%;
+
+}
+.Metro{
+	border: 1px solid red;
+	width: 30%;
+	display:inline-block;
+	vertical-align: top;
+	margin-top: 1%;
+
+}
+
+.bus-wrap1{
+	display: inline-block;
+	width:8%;
+	background-color: blue;
+	padding: 8px;
+	border-top-left-radius:10px; 
+	border-bottom-left-radius:10px;
+	vertical-align: top;
+	height: 39px;
+}
+.bus-wrap2{
+	display: inline-block;
+	text-align: center;
+	width:68% ;
+	background-color: blue;
+	padding: 8px;
+	vertical-align: top;
+	height: 39px;
+
+}
+.bus-wrap3{
+	display: inline-block;
+	width:21%;
+	color:yellow;
+	background-color: #575557;
+	padding: 8px;
+	height: 39px;
+
+}
+.bus-wrap4{
+	font-size: 10px;
+
+}
+
+.metro-wrap1{
+	display: inline-block;
+	width:8%;
+	background-color: orange;
+	padding: 8px;
+	border-top-left-radius:10px; 
+	border-bottom-left-radius:10px;
+	vertical-align: top;
+	height: 39px;
+}
+.metro-wrap2{
+	display: inline-block;
+	text-align: center;
+	width:68% ;
+	background-color: orange;
+	padding: 8px;
+	vertical-align: top;
+	height: 39px;
+
+}
+.metro-wrap3{
+	display: inline-block;
+	width:21%;
+	color:yellow;
+	background-color: #575557;
+	padding: 8px;
+	vertical-align: top;
+	height: 39px;
+}
+.metro-wrap4{
+	font-size: 10px;
+}
+#bike-name, #bikes, #docks{
+	display:inline-block;
+}
+#docks{
+	margin-left: 5%;
+}
+#bikes{
+	margin-left: 44%;
+}
+#bike-name{
+	color:yellow;
+}
+.header{
+	border-bottom: solid 1px  gray;
+	white-space: nowrap;
+	margin-bottom:8px; 
+	border-bottom:1px solid #fff; 
+	padding-bottom:2px;
+
 }
