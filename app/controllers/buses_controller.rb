@@ -11,6 +11,7 @@ before_action :authenticate_user!, only: [:update]
     stop = Bus.create(name: params[:id], user_id: current_user.id)
     favorite_stop = stop.station_info
     @fav_stop = favorite_stop["Predictions"]
+    render :update
   end
 
   # def display_favorites
