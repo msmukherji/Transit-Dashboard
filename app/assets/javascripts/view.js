@@ -6,6 +6,25 @@ $("#Favorites").on("click", function(){
   switchUI()
   console.log("hello")
 })
+var createDate = function(){
+  var date = moment().format("ll");
+  $("#date").html(date);
+}
+
+$(".SignUp").on("click", function(){
+  signUp()
+})
+
+var signUp = function(){
+  $.ajax({
+    url: "new_user_session_path",
+    method: "GET",
+    success: function(data){
+
+    }
+  })
+}
+
 
 var getBusSelect = function(){
   $.ajax({
@@ -186,4 +205,5 @@ $(document).on("ready", function(){
   getBusSelect()
   getMetroSelect()
   getBikeSelect()
+  createDate()
 })
