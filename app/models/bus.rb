@@ -5,7 +5,7 @@ class Bus < Station
     stops = placeholder["Stops"]
   end
 
-  def create_bus_station (stop_array)
+  def self.create_bus_station (stop_array)
     stop_array.each do |stop|
       Station.create(stop)
     end
