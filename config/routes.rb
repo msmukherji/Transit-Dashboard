@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   post "/stations/buses" => "buses#update"
   post "/stations/trains" => "trains#update"
   post "/stations/bikes" => "bikes#update"
+
+  get "/predictions/buses" => "buses#refresh"
+  get "/predictions/trains" => "trains#refresh"
+  get "/predictions/bikes" => "bikes#refresh"
   
   delete "/stations/buses" => "buses#delete"
   delete "/stations/trains" => "trains#delete"

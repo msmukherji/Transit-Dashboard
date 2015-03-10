@@ -6,6 +6,22 @@ class BikesController < ApplicationController
   end
 
   def update
-    @chosen_bikes = Bike.create_bike_station(params[:stop_array])
+    station = Bike.create(params[:id], user_id: current_user.id)
+    @fav_station = station.station_info
+  end
+
+  def refresh
+    favorites = current_user.stations
+    favorites.each do |favorite|
+      if favorite.type = "bike"
+        favorite.station_info
+      end
+    end
+    render :update
+  end
+
+  def delete
+    s = Station.find_by(name: params[:id])
+    s.delete!
   end
 end

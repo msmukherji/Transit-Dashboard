@@ -6,6 +6,26 @@ class TrainsController < ApplicationController
   end
 
   def update
-    @chosen_trains = Train.create_train_station(params[:stop_array])
+    #@chosen_trains = Train.create_train_station(params[:stop_array])
+    stop = Train.create(name: params[:id], user_id: current_user.id)
+    favorite_stop = stop.station_info
+    @fav_stop = favorite_stop["Trains"]
+    render :update
   end
+
+  def refresh
+    favorites = current_user.stations
+    favorites.each do |favorite|
+      if favorite.type = "train"
+        favorite.station_info
+      end
+    end
+    render :update
+  end
+
+  def delete
+    s = Station.find_by(name: params[:id])
+    s.delete!
+  end
+  
 end
