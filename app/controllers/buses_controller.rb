@@ -11,6 +11,6 @@ class BusesController < ApplicationController
   end
 
   def update
-    @chosen_buses = create_bus_station(@stops)
+    Station.create(name: params[:id], type: "bus")
   end
 end

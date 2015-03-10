@@ -81,7 +81,7 @@
 	</script>
 
 	
-	<script type="x-handlebars-template" id=" select-bike-template">
+	<script type="x-handlebars-template" id="select-bike-template">
 	<div class="header">
 		<div id="bike-name">Capital Bikeshare</div>
 		<button class="fav">Fav</button>
@@ -90,8 +90,8 @@
 
 		<div class="bike-info">
 			<div class="bike-wrap1"><i class="fa fa-motorcycle"></i></div>
-			<div class="bike-wrap2">Description</div>
-			<div class="bike-wrap5"></div>
+			<div class="bike-wrap2">{{name}}</div>
+			<div class="bike-wrap5">{{terminal}}</div>
 		</div>
 				
 	</script>
@@ -100,8 +100,8 @@
 	<script type="x-handlebars-template" id="select-metro-template">
 		<div class="header">
 			<span class="pic"><strong>M</strong></span>
-			<span class="station">Station</span>
-			<button class="fav">Fav</button>
+			<span class="station">{{name}}</span>
+			<button data-id="{{id}}"class="fav">Fav</button>
 			<button class="unfav">Unfav</button>
 		</div>
 		{{#each trains}}
@@ -120,8 +120,8 @@
 			<button class="unfav">Unfav</button>
 		</div>
 		{{#each routes}}
-		<div class="bus-wrap1">{{routes}}</div>
-		<div class="bus-wrap2">Destnation</div>
+		<div class="bus-wrap1"></div>
+		<div class="bus-wrap2">Routes: {{this}}</div>
 		<div class="bus-wrap3"></div>
 		{{/each}}
 	</script>

@@ -12,7 +12,7 @@ var getBusSelect = function(){
     url: "/stations/buses.json",
     method: "GET",
     success: function(data){
-      console.log(data)
+      
       _.each(data.stops, function(steve){
         var allData = {
           name: steve.name,
@@ -23,13 +23,17 @@ var getBusSelect = function(){
         var $itemHtml = $(htmlString)
         $(".sBus").append($itemHtml)
 
-        $itemHtml.on("click", function(){
+        $itemHtml.find(".fav").on("click", function(){
           var id = $(this).attr("data-id")
 
-          $ajax({
+          $.ajax({
             method:"POST",
-            URL: "/stations/buses.json",
+            url: "/stations/buses",
+            data: {
+              id: id
+            },
             success: function(data){
+              console.log(data)
 
             }
           })
@@ -45,15 +49,32 @@ var getMetroSelect = function(){
     url: "/stations/trains.json",
     method: "GET",
     success: function(data){
-      _.each(data, function(steve){
+      _.each(data.stops, function(steve){
         var allData = {
           name: steve.name,
           routes: steve.routes,
-          Id: steve.stop_id,
+          Id: steve.station_code,
         }
         var htmlString = templates.selectmetro(allData)
         var $itemHtml = $(htmlString)
         $(".sMetro").append(htmlString)
+
+        $itemHtml.find(".fav").on("click", function(){
+          var id = $(this).attr("data-id")
+
+          $.ajax({
+            method:"POST",
+            url: "/stations/buses.json",
+            data: {
+              id: id
+            },
+            success: function(data){
+              console.log(data)
+
+            }
+          })
+
+        })
 
       })
     }
@@ -64,15 +85,33 @@ var getBikeSelect = function(){
     url: "/stations/bikes.json",
     method: "GET",
     success: function(data){
-      _.each(data, function(steve){
+      console.log(data)
+      _.each(data.stations, function(steve){
         var allData = {
           name: steve.name,
-          routes: steve.routes,
-          Id: steve.stop_id,
+          terminal: steve.terminal,
+          
         }
         var htmlString = templates.selectbike(allData)
         var $itemHtml = $(htmlString)
         $(".sBike").append(htmlString)
+
+        $itemHtml.find(".fav").on("click", function(){
+          var id = $(this).attr("data-id")
+
+          $.ajax({
+            method:"POST",
+            url: "/stations/buses.json",
+            data: {
+              id: id
+            },
+            success: function(data){
+              console.log(data)
+
+            }
+          })
+
+        })
       })
     }
   })
@@ -145,5 +184,6 @@ var getTemplates = function() {
 $(document).on("ready", function(){
   getTemplates()
   getBusSelect()
-
+  getMetroSelect()
+  getBikeSelect()
 })
