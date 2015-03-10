@@ -5,13 +5,15 @@ Dotenv.load
 
 require 'pry'
 
+WMATA_KEY = ENV.fetch("WMATA_KEY")
+
+
 class Station < ActiveRecord::Base
-  belongs_to :user_stations
-  has_many :users, through: :user_stations
+  belongs_to :user
+
+  validates :name, uniqueness: true
 
   include HTTParty
   format :json
   
-  WMATA_KEY = ENV.fetch("WMATA_KEY")
-
 end
