@@ -19,6 +19,12 @@ class Bike < Station
     return station_array
   end
 
+  def station_info
+    bikes = HTTParty.get("https://www.capitalbikeshare.com/data/stations/bikeStations.xml")
+    bike_array = bikes["stations"]["station"]
+    bike_stations = bike_array.find {|x| x["name"]==(params[:id])}
+  end
+
   # def self.create_bike_station (stop_array)
   #   stop_array.each do |stop|
   #     Bike.create(stop)
