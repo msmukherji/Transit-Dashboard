@@ -14,6 +14,7 @@ gem 'pry-rails'
 gem 'devise'
 gem 'quiet_assets'
 gem 'httparty'
+gem 'haversine'
 
 
 group :development, :test do
