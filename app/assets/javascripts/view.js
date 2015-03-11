@@ -11,20 +11,6 @@ var createDate = function(){
   $("#date").html(date);
 }
 
-$(".SignUp").on("click", function(){
-  signUp()
-})
-
-var signUp = function(){
-  $.ajax({
-    url: "new_user_session_path",
-    method: "GET",
-    success: function(data){
-
-    }
-  })
-}
-
 
 var getBusSelect = function(){
   $.ajax({
