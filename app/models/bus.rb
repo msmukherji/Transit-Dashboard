@@ -6,6 +6,6 @@ class Bus < Station
   end
 
   def station_info
-    HTTParty.get("https://api.wmata.com/NextBusService.svc/json/jPredictions?#{name}&api_key=#{WMATA_KEY}")
+    HTTParty.get("https://api.wmata.com/NextBusService.svc/json/jPredictions?StopID=#{name}&api_key=#{WMATA_KEY}")
   end
 end

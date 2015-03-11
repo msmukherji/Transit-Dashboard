@@ -14,13 +14,14 @@ class TrainsController < ApplicationController
   end
 
   def refresh
+    @fav_stops = []
     favorites = current_user.stations
     favorites.each do |favorite|
-      if favorite.type = "train"
-        favorite.station_info
+      if favorite.type = "Train"
+        @fav_stops << favorite.station_info
       end
     end
-    render :update
+    render :refresh
   end
 
   def delete
