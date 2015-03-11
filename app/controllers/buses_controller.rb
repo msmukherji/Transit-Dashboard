@@ -17,7 +17,7 @@ class BusesController < ApplicationController
     @fav_stops = []
     favorites = current_user.stations
     favorites.each do |favorite|
-      if favorite.type = "bus"
+      if favorite.type = "Bus"
         @fav_stops << favorite.station_info
       end
     end
