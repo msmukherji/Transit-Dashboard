@@ -18,7 +18,7 @@ class TrainsController < ApplicationController
     favorites = current_user.stations
     favorites.each do |favorite|
       if favorite.type = "Train"
-        @fav_stops << favorite.station_info
+        @fav_stops << favorite.station_info["Trains"]
       end
     end
     render :refresh
