@@ -6,6 +6,11 @@ $("#Favorites").on("click", function(){
   switchUI()
   console.log("hello")
 })
+var createDate = function(){
+  var date = moment().format("ll");
+  $("#date").html(date);
+}
+
 
 var getBusSelect = function(){
   $.ajax({
@@ -186,4 +191,5 @@ $(document).on("ready", function(){
   getBusSelect()
   getMetroSelect()
   getBikeSelect()
+  createDate()
 })

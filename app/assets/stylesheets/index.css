@@ -16,14 +16,26 @@
 	margin-left:3px;
 }
 .Favorites{
-	border-left: solid 1px red;
+	border-left: solid 1px white;
+	border-right: solid 1px white;
+	padding-left: 5px;
+padding-right: 5px;
 }
-.SignUp{
-	border-left: solid 1px red;
+#date{
+	border-left: solid 1px white;
 }
-.SignUp:hover{
-cursor: pointer;
-color:red;
+#SignUp{
+	border-left: solid 1px white;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+#SignUp:hover{
+	cursor: pointer;
+	color:red;
+}
+a{
+	text-decoration: none;
+	color: white;
 }
 .Favorites:hover{
 cursor: pointer;
@@ -36,32 +48,36 @@ color:red;
   	font-family: Helvetica, Arial, sans-serif;
   	color:#eeeeee;
   	overflow: auto; 
+  	min-width: 1400px;
 }
 h1{
 	color: red;
 }
 .Bus, .sBus{
-	border: 1px solid blue;
+	
 	width: 30%;
 	display:inline-block;
 	margin-left:1%;
 	margin-top: 1%;
+	text-align: center;
 
 }
 .Bike, .sBike{
-	border: 1px solid purple;
+	
 	width: 30%;
 	display:inline-block;
 	vertical-align: top;
 	margin-top: 1%;
+	text-align: center;
 
 }
 .Metro, .sMetro{
-	border: 1px solid red;
+	
 	width: 30%;
 	display:inline-block;
 	vertical-align: top;
 	margin-top: 1%;
+	text-align: center;
 
 }
 
@@ -199,9 +215,25 @@ h1{
 	border-bottom:1px solid #fff; 
 	padding-bottom:2px;
 	font-size: 11px;
-
+	text-align: left;
 }
 .fav, .unfav{
 	width: 25%;
 	display:inline-block;
+
+}
+.fav:hover{
+	cursor:pointer;
+	background-color: green;
+} 
+.unfav:hover{
+	cursor: pointer;
+	background-color: red;
+}
+.wrap{
+	margin-bottom: 7px;
+	border: 1px solid white;
+}
+.buttons{
+
 }
