@@ -13,6 +13,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'pry-rails'
 gem 'devise'
 gem 'quiet_assets'
+gem 'httparty'
+gem 'haversine'
 
 
 group :development, :test do
@@ -20,5 +22,6 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails'
+  gem 'dotenv-rails'
 end
 

@@ -16,4 +16,9 @@
 !/log/.keep
 /tmp
 
+<<<<<<< HEAD
 .env
+=======
+*.DS_Store
+.env
+>>>>>>> 27ca818abd496f60423cd4d238d8c9ee8bee3a86
